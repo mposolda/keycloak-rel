@@ -119,8 +119,8 @@ jobs:
     uses: ./.github/workflows/x-keycloak-quickstarts.yml
     with:
       gh-org: ${{ needs.env.outputs.gh-org }}
-      tag: ${{ github.event.inputs.version }}
-      target-branch: latest
+      server-version: ${{ github.event.inputs.version }}
+      target-branch: main
     secrets:
       GH_TOKEN: ${{ secrets.GH_TOKEN }}
 

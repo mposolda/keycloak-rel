@@ -54,10 +54,12 @@ jobs:
           git commit -a -m "Set version to ${{ inputs.tag }}"
 
       - name: Tag commit
+        if: matrix.repository != 'keycloak-quickstarts' || inputs.tag == 'nightly'
         working-directory: ${{ matrix.repository }}
         run: git tag --force ${{ inputs.tag }}
 
       - name: Push changes
+        if: matrix.repository != 'keycloak-quickstarts' || inputs.tag == 'nightly'
         working-directory: ${{ matrix.repository }}
         run: git push --force origin refs/tags/${{ inputs.tag }}
 
@@ -68,4 +70,6 @@ jobs:
     steps:
       - run: |
           echo "https://github.com/${{ inputs.gh-org }}/keycloak/tree/${{ inputs.tag }}  " >> $GITHUB_STEP_SUMMARY
-          echo "https://github.com/${{ inputs.gh-org }}/keycloak-quickstarts/tree/${{ inputs.tag }}  " >> $GITHUB_STEP_SUMMARY
+          if [ "${{ inputs.tag }}" == "nightly" ]; then
+            echo "https://github.com/${{ inputs.gh-org }}/keycloak-quickstarts/tree/${{ inputs.tag }}  " >> $GITHUB_STEP_SUMMARY
+          fi
