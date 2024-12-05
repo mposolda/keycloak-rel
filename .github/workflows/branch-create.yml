@@ -50,7 +50,6 @@ jobs:
         repository:
           - keycloak
           - keycloak-nodejs-connect
-          - keycloak-quickstarts
 
     steps:
     - name: Checkout repository
