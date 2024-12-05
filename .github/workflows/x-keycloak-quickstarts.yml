@@ -1,7 +1,7 @@
 name: X Keycloak QuickStarts
 
 on:
-  workflow_call:
+  workflow_dispatch:
     inputs:
       gh-org:
         required: true
