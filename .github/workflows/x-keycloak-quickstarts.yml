@@ -40,7 +40,7 @@ jobs:
           git commit -a -m "Set server version to ${{ inputs.server-version }}"          
 
       - name: Push changes
-        run: git push origin ${{ inputs.server-version }}
+        run: git push origin ${{ inputs.target-branch }}
 
       - name: Show QuickStart branch
         run: echo "https://github.com/${{ inputs.gh-org }}/keycloak-quickstarts/tree/${{ inputs.target-branch }}  " >> $GITHUB_STEP_SUMMARY
